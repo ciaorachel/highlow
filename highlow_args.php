@@ -3,7 +3,7 @@
 //Now user inputs their min and max #s
 if ($argc == 3) {
 	$a = rand($argv[1], $argv[2]);
-};
+}
 
 if ($argc != 3) { 
 	fwrite(STDOUT, 'Let\'s play a number guessing game. You pick the minimum and maximum numbers in the range, and I\'ll draw the random number for you to guess. Pick the minimum number first... ');
@@ -41,18 +41,20 @@ while ($guess > 0) {
 		fwrite(STDOUT, 'Looking for a number between 1 and 100. Try again... ');
 		$guess = trim(fgets(STDIN));
 	}
-}
+};
 
 //output
-fwrite(STDOUT, 'Want to play again? Enter 1 for yes / Enter 0 for no... ');
+fwrite(STDOUT, 'Want to play again? Enter 0 for yes / Enter 1 for no... ');
 
 //input from user
 $playAgain = trim(fgets(STDIN));
 
-if ($playAgain != 1) {
+if ($playAgain == 0) {
+	fwrite(STDOUT, 'Thank you for playing!' . PHP_EOL);
+} elseif ($guess == 1)  {
 	fwrite(STDOUT, 'Thank you for playing! ' . PHP_EOL);
 } else {
-	fwrite(STDOUT, 'Sounds good! Let\'s play again. ' . PHP_EOL);
+	fwrite(STDOUT, 'Enter 0 for yes / Enter 1 for no... ' . PHP_EOL);
 }
 
 ?>
